@@ -7,12 +7,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
-public class VisualisedView {
+public class BarChartView {
     private GridPane view;
     private Label label;
     private Button backBtn;
 
-    public VisualisedView() {
+    public BarChartView() {
         configureLayout();
         createLayoutControls();
     }
