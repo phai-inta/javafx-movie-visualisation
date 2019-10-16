@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 
 public class LoadXMLModel {
+    Hashtable<String, Integer> keywordIndex;
 
     public LoadXMLModel() {
     }
@@ -78,7 +79,6 @@ public class LoadXMLModel {
         NodeList genresList = eElement.getElementsByTagName("item");
         ArrayList<String> genres = new ArrayList<>();
         for (int count = 0; count < genresList.getLength(); count++) {
-
             Node nodeItem = genresList.item(count);
             if (nodeItem.getNodeType() == nodeItem.ELEMENT_NODE) {
                 Element item = (Element) nodeItem;
@@ -104,15 +104,17 @@ public class LoadXMLModel {
     }
 
     public Hashtable<String, Integer> createKeywordIndex(ArrayList<Movie> movies){
-        Hashtable<String, Integer> keywordIndex = new Hashtable<>();
+        int i = 0;
+        keywordIndex = new Hashtable<>();
+
         for(Movie movie: movies){
             ArrayList<String> keywords = movie.getKeywords();
-            for(String keyword : keywords){
-                if(keywordIndex.containsKey(keyword)){ // if the keyword is in the index, increase the frequency
-                    Integer frequency = keywordIndex.get(keyword);
-                    keywordIndex.put(keyword, frequency + 1);
+            for(String word: keywords) {
+                if(keywordIndex.containsKey(word)){ // if the keyword is in the index, increase the frequency
+                    Integer frequency = keywordIndex.get(word);
+                    keywordIndex.put(word, frequency + 1);
                 } else { // if not, put the frequency as 1
-                    keywordIndex.put(keyword, 1);
+                    keywordIndex.put(word, 1);
                 }
             }
         }
