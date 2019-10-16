@@ -11,6 +11,7 @@ import sample.views.SearchView;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 public class LoadXMLController {
     private LoadXMLView view;
@@ -42,11 +43,12 @@ public class LoadXMLController {
             }
         });
         this.view.addContinueToSearchListener( e -> {
+            Hashtable<String, Integer> keywordList = model.createKeywordIndex(movies);
             SearchView searchView = new SearchView();
-            SearchModel searchModel = new SearchModel(movies);
-            SearchController searchController = new SearchController(searchView, searchModel);
-
-            stage.setScene(new Scene(searchView.asParent(),450,300));
+            SearchModel searchModel = new SearchModel(movies, keywordList);
+            SearchController searchController = new SearchController(stage, searchView, searchModel);
+            stage.setTitle("Movie Search");
+            stage.setScene(new Scene(searchView.asParent(),600,600));
         });
     }
 }

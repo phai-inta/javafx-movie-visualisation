@@ -35,12 +35,11 @@ public class Main extends Application {
         LoadXMLModel loadXMLModel = new LoadXMLModel();
         LoadXMLController loadXMLController = new LoadXMLController(stage, loadXMLView, loadXMLModel);
 
-        Scene scene = new Scene(loadXMLView.asParent(),450,300);
+        Scene scene = new Scene(loadXMLView.asParent(),600,500);
         stage.setScene(scene);
         stage.setTitle("IMDB XML File Parsing System");
         stage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

@@ -11,7 +11,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
-
 public class LoadXMLView {
     private GridPane view;
     private Button btnSource;
@@ -52,6 +51,8 @@ public class LoadXMLView {
         hboxParsing = new HBox(btnParse);
         hboxParsing.setSpacing(10);
         txtXML = new TextArea();
+        txtXML.setPrefHeight(380);
+        txtXML.setPrefWidth(500);
         btnContinueToSearch = new Button("Continue to search");
 
         view.addRow(0,hboxSource);
@@ -65,7 +66,7 @@ public class LoadXMLView {
         view.setPadding(new Insets(10,10,10,10));
         view.setHgap(10);
         view.setVgap(10);
-        view.setAlignment(Pos.CENTER);
+        view.setAlignment(Pos.TOP_CENTER);
     }
 
     public void addChooseFileListener(EventHandler<ActionEvent> listener){
