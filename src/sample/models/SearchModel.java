@@ -49,6 +49,7 @@ public class SearchModel {
      * Sort the index by frequencies
      * @param filteredKeywords
      * @param topString
+     * @reference https://stackoverflow.com/questions/7170871/iterating-through-a-linkedhashmap-in-reverse-order
      */
     public LinkedHashMap<String, Integer> getTopKeywords(Hashtable<String, Integer> filteredKeywords, String topString) {
         int topNo;
