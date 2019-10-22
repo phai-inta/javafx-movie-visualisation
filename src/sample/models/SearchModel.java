@@ -11,6 +11,10 @@ public class SearchModel {
         this.keywordIndex = keywordIndex;
     }
 
+    /**
+     * Find all movies that have the keyword
+     * @param keyword
+     */
     public ArrayList<Movie> findMovieByKeyword(String keyword){
         ArrayList<Movie> result = new ArrayList<>();
         for(Movie movie : movies){
@@ -22,7 +26,12 @@ public class SearchModel {
         return result;
     }
 
-    public LinkedHashMap<String, Integer> filteredIndex(ArrayList<Movie> movies, String topString) {
+    /**
+     * Get the top keywords index
+     * @param movies
+     * @param topString
+     */
+    public LinkedHashMap<String, Integer> getFilteredIndex(ArrayList<Movie> movies, String topString) {
         Hashtable<String, Integer> filteredKeywords = new Hashtable<>();
 
         for (Movie movie : movies) {
@@ -32,11 +41,15 @@ public class SearchModel {
                 filteredKeywords.put(word, keywordIndex.get(word));
             }
         }
-        LinkedHashMap<String, Integer> sorted = new LinkedHashMap<>();
-        sorted = getTopKeywords(filteredKeywords, topString);
+        LinkedHashMap<String, Integer> sorted = getTopKeywords(filteredKeywords, topString);
         return sorted;
     }
 
+    /**
+     * Sort the index by frequencies
+     * @param filteredKeywords
+     * @param topString
+     */
     public LinkedHashMap<String, Integer> getTopKeywords(Hashtable<String, Integer> filteredKeywords, String topString) {
         int topNo;
         if (topString.contains("3")) {
@@ -55,10 +68,6 @@ public class SearchModel {
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .limit(topNo)
                 .forEachOrdered(x -> finalSorted.put(x.getKey(), x.getValue()));
-//        System.out.println("======all sorted keywords======");
-//        for(Map.Entry<String, Integer> entry: finalSorted.entrySet()) {
-//            System.out.println("Key: " + entry.getKey() + "," + "Frequency: " + entry.getValue());
-//        }
         return finalSorted;
     }
 }

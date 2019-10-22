@@ -40,10 +40,17 @@ public class SearchView {
         txtResult.setText(txt);
     }
 
-    public String getSelectedFiler() {
+    public String getSelectedFilter() {
         return selectedFilter.getText();
     }
 
+    public Parent asParent(){
+        return view;
+    }
+
+    /**
+     *  Create layout components for the search view
+     */
     private void createLayoutControls(){
         lblForm = new Label("Enter a keyword to search for movies");
         lblKeyword = new Label("Keyword: ");
@@ -91,6 +98,9 @@ public class SearchView {
         view.addRow(7, hBox);
     }
 
+    /**
+     * Set layout as GridPane with padding and alignment
+     */
     private void configureLayout(){
         view = new GridPane();
         view.setPadding(new Insets(10,10,10,10));
@@ -99,18 +109,26 @@ public class SearchView {
         view.setAlignment(Pos.TOP_CENTER);
     }
 
+    /**
+     * Add Search movie event Handler
+     * @param listener
+     */
     public void addSearchMovieListener(EventHandler<ActionEvent> listener){
         btnSearch.setOnAction(listener);
     }
 
-    public Parent asParent(){
-        return view;
-    }
-
+    /**
+     * Add bar chart event Handler
+     * @param listener
+     */
     public void addBarCharBtnListener(EventHandler<ActionEvent> listener){
         barBtn.setOnAction(listener);
     }
 
+    /**
+     * Add pie chart event Handler
+     * @param listener
+     */
     public void addPieCharBtnListener(EventHandler<ActionEvent> listener){
         pieBtn.setOnAction(listener);
     }

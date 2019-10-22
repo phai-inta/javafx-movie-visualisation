@@ -2,11 +2,9 @@ package sample.controllers;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import sample.models.LoadXMLModel;
 import sample.models.Movie;
 import sample.models.SearchModel;
 import sample.views.BarChartView;
-import sample.views.LoadXMLView;
 import sample.views.PieChartView;
 import sample.views.SearchView;
 import java.util.ArrayList;
@@ -19,6 +17,13 @@ public class SearchController {
     private ArrayList<Movie> movies;
     private Hashtable<String, Integer> keywordList;
 
+    /**
+     * Constructor for Search Controller to connect view and model
+     * and set up the event handlers
+     * @param stage
+     * @param view
+     * @param model
+     */
     public SearchController(Stage stage, SearchView view, SearchModel model) {
         this.view = view;
         this.model = model;
@@ -38,8 +43,8 @@ public class SearchController {
         });
 
         this.view.addBarCharBtnListener(e -> {
-            String topString = view.getSelectedFiler(); //get selected top filter
-            LinkedHashMap<String, Integer> filteredList = model.filteredIndex(movies, topString);
+            String topString = view.getSelectedFilter(); //get selected top filter
+            LinkedHashMap<String, Integer> filteredList = model.getFilteredIndex(movies, topString);
             BarChartView barChartView = new BarChartView(filteredList, topString);
             BarChartController barChartController = new BarChartController(barChartView);
             Stage stage1 = new Stage();
@@ -49,8 +54,8 @@ public class SearchController {
         });
 
         this.view.addPieCharBtnListener(e -> {
-            String topString = view.getSelectedFiler(); //get selected top filter
-            LinkedHashMap<String, Integer> filteredList = model.filteredIndex(movies, topString);
+            String topString = view.getSelectedFilter(); //get selected top filter
+            LinkedHashMap<String, Integer> filteredList = model.getFilteredIndex(movies, topString);
             PieChartView pieChartView = new PieChartView(filteredList, topString);
             PieChartController pieChartController = new PieChartController(pieChartView);
             Stage stage1 = new Stage();

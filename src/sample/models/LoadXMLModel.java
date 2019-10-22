@@ -20,6 +20,11 @@ public class LoadXMLModel {
     public LoadXMLModel() {
     }
 
+    /**
+     * Create the Document object and get back movies
+     * @param selectedFile
+     * @return movies
+     */
     public ArrayList<Movie> parseXMLFile(File selectedFile){
         ArrayList<Movie> movies = new ArrayList<>();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -40,6 +45,11 @@ public class LoadXMLModel {
         return null;
     }
 
+    /**
+     * Parse movies from the Document object
+     * @param doc
+     * @return movies
+     */
     private ArrayList<Movie> getMovies(Document doc){
         ArrayList<Movie> movies = new ArrayList<>();
         NodeList nList = doc.getElementsByTagName("movie");
@@ -60,6 +70,11 @@ public class LoadXMLModel {
         return movies;
     }
 
+    /**
+     * Get Directors from XML element
+     * @param eElement
+     * @return persons
+     */
     private ArrayList<Person> getDirectors(Element eElement){
         NodeList directorsList = eElement.getElementsByTagName("director");
         ArrayList<Person> directors = new ArrayList<>();
@@ -75,6 +90,11 @@ public class LoadXMLModel {
         return directors;
     }
 
+    /**
+     * Get genres from element
+     * @param eElement
+     * @return genres
+     */
     private ArrayList<String> getGenres(Element eElement){
         NodeList genresList = eElement.getElementsByTagName("item");
         ArrayList<String> genres = new ArrayList<>();
@@ -89,6 +109,11 @@ public class LoadXMLModel {
         return genres;
     }
 
+    /**
+     * Get keywords from elements
+     * @param eElement
+     * @return arraylist of string
+     */
     private ArrayList<String> getKeywords(Element eElement){
         NodeList keywordsList = eElement.getElementsByTagName("kw");
         ArrayList<String> keywords = new ArrayList<>();
@@ -103,6 +128,11 @@ public class LoadXMLModel {
         return keywords;
     }
 
+    /**
+     * Create an index of all keywords in the xml files (unsorted)
+     * @param movies
+     * @return Hashtable<String, Integer>
+     */
     public Hashtable<String, Integer> createKeywordIndex(ArrayList<Movie> movies){
         int i = 0;
         keywordIndex = new Hashtable<>();

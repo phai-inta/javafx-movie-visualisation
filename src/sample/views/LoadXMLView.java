@@ -42,6 +42,9 @@ public class LoadXMLView {
         txtXML.setText(txt);
     }
 
+    /**
+     *  Create layout components for the loadXML view
+     */
     private void createLayoutControls(){
         btnSource = new Button("Choose Source");
         lblSource = new Label("");
@@ -60,6 +63,10 @@ public class LoadXMLView {
         view.addRow(2, txtXML);
         view.addRow(3, btnContinueToSearch);
     }
+
+    /**
+     * Set layout as GridPane with padding and alignment
+     */
     private void configureLayout(){
         view = new GridPane();
 
@@ -69,14 +76,26 @@ public class LoadXMLView {
         view.setAlignment(Pos.TOP_CENTER);
     }
 
+    /**
+     * Add Choose File event Handler
+     * @param listener
+     */
     public void addChooseFileListener(EventHandler<ActionEvent> listener){
         btnSource.setOnAction(listener);
     }
 
+    /**
+     * Add Parse File event Handler
+     * @param listener
+     */
     public void addParseFileListener(EventHandler<ActionEvent> listener){
         btnParse.setOnAction(listener);
     }
 
+    /**
+     * Add Continue to search screen event Handler
+     * @param listener
+     */
     public void addContinueToSearchListener(EventHandler<ActionEvent> listener){
         btnContinueToSearch.setOnAction(listener);
     }

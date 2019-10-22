@@ -2,6 +2,9 @@ package sample.models;
 
 import java.util.ArrayList;
 
+/**
+ * POJO class for a Movie that matches with the XML format
+ */
 public class Movie {
     private String title;
     private int year;
